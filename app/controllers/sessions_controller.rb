@@ -10,8 +10,6 @@ class SessionsController < ApplicationController
     next_body_hash = JSON.parse(access_token_resp.body)
     session[:username] = next_body_hash["login"]
 
-
-
     redirect_to root_path
    end
  end
