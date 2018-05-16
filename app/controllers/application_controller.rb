@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       # https://developer.github.com/apps/building-oauth-apps/authorization-options-for-oauth-apps/#web-application-flow
       client_id = ENV['CLIENT_ID']
       # redirect_uri = CGI.escape("http://localhost:3000/auth")
-      github_url = "https://github.com/login/oauth/authorize?client_id=#{client_id}&scope=repo"
+      github_url = 'https://github.com/login/oauth/authorize?client_id=#{client_id}&scope=repo'
       redirect_to github_url unless logged_in?
 
     end
@@ -22,5 +22,5 @@ class ApplicationController < ActionController::Base
 
     def current_user
       @current_user ||= session[:username] if session[:username]
-    end 
+    end
 end
