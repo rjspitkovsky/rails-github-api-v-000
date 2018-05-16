@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 
   def create
-    resp = (:post => "https://github.com/login/oauth/access_token").
+    resp = (:post => {"https://github.com/login/oauth/access_token"}).
          with(:body => {"client_id"=>"Iv1.a4ca637fbd533914", "client_secret"=>"feb5be490850317508dada7a906f4d263638516d", "code"=>"2
 0"},
               :headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type
