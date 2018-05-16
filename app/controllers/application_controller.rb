@@ -20,7 +20,4 @@ class ApplicationController < ActionController::Base
       !!session[:token]
     end
 
-    def current_user
-      @current_user ||= session[:username] if session[:username]
-    end
 end
