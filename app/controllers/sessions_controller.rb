@@ -3,7 +3,13 @@ class SessionsController < ApplicationController
 
 
   def create
-    resp = Faraday.post("https://github.com/login/oauth/access_token", {client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"], code: params[:code]}, {'Accept' => 'application/json'})
+    resp =        stub_request(:post, "https://github.com/login/oauth/access_token").
+         with(:body => {"client_id"=>"Iv1.a4ca637fbd533914", "client_secret"=>"feb5be490850317508dada7a906f4d263638516d", "code"=>"2
+0"},
+              :headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type
+'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Faraday v0.9.1'}).
+         to_return(:status => 200, :body => "", :headers => {})
+    # resp = Faraday.post("https://github.com/login/oauth/access_token", {client_id: ENV["CLIENT_ID"], client_secret: ENV["CLIENT_SECRET"], code: params[:code]}, {'Accept' => 'application/json'})
     body = JSON.parse(resp.body)
     session[:token] = body['access_token']
 
